@@ -25,6 +25,7 @@ def quick_sort(data, left, right):
 # 把数据分成右边大，左边小
 def partition(li, left, right):
     tmp = li[left]
+    print('首次现在排完的列表是%s，中间值下标是%s，中间值是%s' % (li, left, li[left]))
     while left < right:
         # 循环找比目标值小的数
         while left < right and li[right] >= tmp: # 从右面找比 tmp 小的数
@@ -36,6 +37,7 @@ def partition(li, left, right):
         li[right] = li[left] # 把左边的值写到右边空位上
         print('左边', li)
     li[left] = tmp # left 和 right碰头了 把tmp 归位
+    print('上一次完成后现在排完的列表是%s，中间值下标是%s，中间值是%s'%(li, left, li[left]))
     return left # 返回mid
 
 li = [5, 7, 4, 6, 3, 1, 2, 9, 8]
@@ -48,6 +50,7 @@ def quick_sort(li, left, right):
         mid = partition(li, left, right)
         quick_sort(li, left, mid - 1)
         quick_sort(li, mid + 1, right)
+
 
 quick_sort(li, 0, len(li) - 1)
 print('完成', li)
